@@ -1,0 +1,26 @@
+<div class="employees">
+    <div class="employees-header">
+        <h1 class="employees-header--title">Our Company</h1>
+        <span class="employees-header--subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+            dolores
+            ullam et quam harum officiis nobis repellendus debitis ipsam quo. Consectetur voluptas fugit quos quisquam
+            natus, quod voluptatibus facilis incidunt?</span>
+    </div>
+
+    <h4>Employee list</h4>
+
+    <div class="search">
+        <input [(ngModel)]="searchText" (ngModelChange)="onSearch($event)" type="text" placeholder="Search">
+        <span *ngIf="searchText" (click)="onResetSearch()" class="search-reset">X</span>
+    </div>
+
+    <app-employee-list *ngIf="(e$ | async) as employees; else noEmployeesTpl" [employees]="employees"
+        (edit)="onEditEmployee($event)" (delete)="onDeleteEmployee($event)"></app-employee-list>
+</div>
+
+<ng-template #noEmployeesTpl>
+    <div class="no-employees">
+        <ng-container *ngIf="searchText">No employees found by search criteria</ng-container>
+        <ng-container *ngIf="!searchText">No employees found</ng-container>
+    </div>
+</ng-template>

@@ -1,0 +1,84 @@
+@import "colors";
+
+:host {
+  margin: 8px 0;
+  display: block;
+}
+
+.employee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+      filter: brightness(0.95);
+      border-radius: 8px;
+    }
+
+  &-info {
+    display: flex;
+    align-items: center;
+
+    &--avatar {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    &--metadata {
+      display: flex;
+      flex-direction: column;
+      margin-left: 8px;
+
+      span {
+        &:first-of-type {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &-buttons {
+    img {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+      padding: 4px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+
+      &:active {
+        filter: brightness(0.7);
+      }
+
+      &:first-of-type {
+        background-color: $error-light;
+        color: $error-dark;
+        margin-right: 8px;
+
+      }
+
+      &:last-of-type {
+        background-color: $color-grey-010;
+        color: $color-grey-020;
+      }
+
+      &.disabled {
+        background-color: $color-grey-010;
+        filter: brightness(1.4);
+        cursor: not-allowed;
+
+        &:hover,
+        &:active {
+          filter: brightness(1.4);
+        }
+      }
+    }
+  }
+}

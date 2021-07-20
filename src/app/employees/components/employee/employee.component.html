@@ -1,0 +1,18 @@
+<div *ngIf="employee" class="employee">
+    <div class="employee-info">
+        <img src="/assets/images/user.png" class="employee-info--avatar">
+
+        <div class="employee-info--metadata">
+            <span>{{ employee.firstName }} {{ employee.secondName }}</span>
+            <span>{{ employee.position }}</span>
+        </div>
+    </div>
+
+    <div class="employee-buttons">
+        <img (click)="delete.emit(employee.id)" src="/assets/images/delete-user.png">
+        <img (click)="onEdit()" src="/assets/images/edit-user.png"
+        [class.disabled]="employee.blocked">
+
+    </div>
+</div>
+<app-modal #modal></app-modal>

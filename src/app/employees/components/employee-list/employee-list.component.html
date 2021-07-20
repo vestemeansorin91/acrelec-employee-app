@@ -1,0 +1,1 @@
+<app-employee *ngFor="let employee of employees" [employee]="employee" (edit)="edit.emit($event)" (delete)="delete.emit($event)"  @fade></app-employee>
