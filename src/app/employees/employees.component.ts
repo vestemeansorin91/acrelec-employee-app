@@ -15,7 +15,6 @@ export class EmployeesComponent implements OnInit {
   public e$ = new BehaviorSubject<Employee[]>([]);
   public searchText: string = '';
 
-
   constructor(private service: EmployeesService) { }
 
   ngOnInit(): void {
@@ -40,10 +39,6 @@ export class EmployeesComponent implements OnInit {
   }
 
   public onEditEmployee(employee: Employee): void {
-    console.log('onEditEmployee', employee);
-
-    const input = document.createElement('input');
-    input.setAttribute('type', 'checkbox');
   }
 
   public onDeleteEmployee(id: string): void {

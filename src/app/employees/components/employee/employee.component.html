@@ -9,10 +9,10 @@
     </div>
 
     <div class="employee-buttons">
-        <img (click)="delete.emit(employee.id)" src="/assets/images/delete-user.png">
+        <img (click)="onDelete()" src="/assets/images/delete-user.png">
         <img (click)="onEdit()" src="/assets/images/edit-user.png"
         [class.disabled]="employee.blocked">
-
     </div>
 </div>
-<app-modal #modal></app-modal>
+<app-modal #modalRef></app-modal>
+<app-confirm-dialog #confirmDialogRef (confirm)="delete.emit(employee?.id)"></app-confirm-dialog>

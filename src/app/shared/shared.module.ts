@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NgModule } from '@angular/core';
 
@@ -7,8 +8,9 @@ import { NgModule } from '@angular/core';
     CommonModule
   ],
   declarations: [
-    ModalComponent
+    ModalComponent,
+    ConfirmDialogComponent
   ],
-  exports: [ModalComponent]
+  exports: [ModalComponent, ConfirmDialogComponent]
 })
 export class SharedModule { }

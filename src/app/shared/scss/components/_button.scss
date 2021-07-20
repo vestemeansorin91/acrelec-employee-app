@@ -1,0 +1,29 @@
+@import '../colors';
+
+button {
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #3498db;
+  font-weight: bolder;
+  font-size: 16px;
+  margin: 0 8px;
+  padding: 8px 16px;
+  border-radius: 4px;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    filter: brightness(0.7);
+  }
+
+  &.no-margin {
+    margin: 0;
+  }
+
+  &.delete {
+      background-color: $error-light;
+  }
+}

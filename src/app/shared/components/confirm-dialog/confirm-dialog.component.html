@@ -1,0 +1,12 @@
+<div #confirmDialogRef class="confirm-dialog">
+    <div *ngIf="data" class="modal confirm">
+        <h3 class="modal-header">Delete Employee</h3>
+        <div class="modal-content">Are you sure you want to remove <strong> {{ data.firstName }} {{ data.secondName }}
+            </strong>? </div>
+
+        <div class="modal-buttons">
+            <button (click)="confirm.emit()" class="delete">Confirm</button>
+            <button (click)="close()" class="no-margin">Close</button>
+        </div>
+    </div>
+</div>

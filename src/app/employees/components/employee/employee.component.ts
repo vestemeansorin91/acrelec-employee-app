@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
+import { ConfirmDialogComponent } from './../../../shared/components/confirm-dialog/confirm-dialog.component';
 import { Employee } from '../../models/employee';
 import { ModalComponent } from './../../../shared/components/modal/modal.component';
 
@@ -13,13 +14,17 @@ export class EmployeeComponent {
   @Output() public delete = new EventEmitter<string>();
   @Output() public edit = new EventEmitter<Employee>();
 
-  @ViewChild('modal', { static: false }) modal: ModalComponent | undefined;
+  @ViewChild('modalRef', { static: false }) modal: ModalComponent | undefined;
+  @ViewChild('confirmDialogRef', { static: false }) confirmDialog: ConfirmDialogComponent | undefined;
 
   onEdit() {
     if(!this.employee?.blocked) {
       this.edit.emit(this.employee);
-      this.modal?.open();
-      console.log(this.modal)
+      this.modal?.open(this.employee);
     }
+  }
+
+  onDelete() {
+    this.confirmDialog?.open(this.employee);
   }
 }

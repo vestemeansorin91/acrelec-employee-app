@@ -6,13 +6,14 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
+  @ViewChild('modalRef', { static: false }) modal: ElementRef | undefined;
+  public data: any = null;
 
-  @ViewChild('myModal', { static: false }) modal: ElementRef | undefined;
-
-  open() {
+  open(data: any) {
     if (this.modal) {
       this.modal.nativeElement.style.display = 'block';
     }
+    this.data = data || null;
   }
 
   close() {
