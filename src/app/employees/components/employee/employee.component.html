@@ -14,5 +14,4 @@
         [class.disabled]="employee.blocked">
     </div>
 </div>
-<app-modal #modalRef></app-modal>
 <app-confirm-dialog #confirmDialogRef (confirm)="delete.emit(employee?.id)"></app-confirm-dialog>

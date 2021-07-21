@@ -1,21 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { FullNamePipe } from './pipes/fullName.pipe';
-import { ModalComponent } from './components/modal/modal.component';
 import { NgModule } from '@angular/core';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
     // components
-    ModalComponent,
     ConfirmDialogComponent,
 
     // pipes
-    FullNamePipe
+    FullNamePipe,
+    SearchPipe
   ],
   imports: [
     CommonModule
   ],
-  exports: [ModalComponent, ConfirmDialogComponent, FullNamePipe]
+  exports: [ConfirmDialogComponent, FullNamePipe, SearchPipe]
 })
 export class SharedModule { }

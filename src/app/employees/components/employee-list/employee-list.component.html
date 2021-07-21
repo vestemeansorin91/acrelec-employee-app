@@ -1,15 +1,14 @@
 <h2>Employee list</h2>
 
 <div class="search">
-    <input [(ngModel)]="searchText" (ngModelChange)="onSearch($event)" type="text" placeholder="Search">
+    <input [(ngModel)]="searchText" type="text" placeholder="Search">
     <span *ngIf="searchText" (click)="onResetSearch()" class="search-reset">X</span>
 </div>
 
 <div class="divider"></div>
 
-
 <ng-container *ngIf="employees && employees.length; else noEmployeesTpl">
-    <app-employee *ngFor="let employee of employees" [employee]="employee" (edit)="onEditEmployee($event)" (delete)="onDeleteEmployee($event)"  @fade></app-employee>
+    <app-employee *ngFor="let employee of employees | search : searchText" [employee]="employee" (edit)="onEditEmployee($event)" (delete)="onDeleteEmployee($event)"  @fade></app-employee>
 </ng-container>
 
 <ng-template #noEmployeesTpl>

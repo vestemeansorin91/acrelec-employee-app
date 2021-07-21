@@ -28,20 +28,11 @@ export class EmployeeListComponent {
 
   constructor(private service: EmployeesService, private localStorageService: LocalStorageService, private router: Router) {
     this.employees = this.service.getAllEmployees();
-   }
-
-  public onSearch(input: string): void {
-    // this.search.emit(input);
-    // (input ? this.service.getEmplyoees().pipe(
-    //   map(employees => employees.filter(e => e.firstName.includes(input) || e.secondName.includes(input) || e.position.includes(input))),
-    //   tap((e) => console.log(e))
-    // ) : this.service.getEmplyoees()).subscribe(r => {
-    //   this.e$.next(r);
-    // });
   }
 
   public onResetSearch(): void {
     this.searchText = '';
+    this.employees = this.service.getAllEmployees();
   }
 
   public onEditEmployee(employee: Employee): void {
