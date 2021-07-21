@@ -7,4 +7,14 @@
 
 <div class="divider"></div>
 
-<app-employee *ngFor="let employee of employees" [employee]="employee" (edit)="edit.emit($event)" (delete)="delete.emit($event)"  @fade></app-employee>
+
+<ng-container *ngIf="employees && employees.length; else noEmployeesTpl">
+    <app-employee *ngFor="let employee of employees" [employee]="employee" (edit)="onEditEmployee($event)" (delete)="onDeleteEmployee($event)"  @fade></app-employee>
+</ng-container>
+
+<ng-template #noEmployeesTpl>
+    <div class="no-employees">
+        <ng-container *ngIf="searchText">No employees found by search criteria</ng-container>
+        <ng-container *ngIf="!searchText">No employees registered</ng-container>
+    </div>
+</ng-template>

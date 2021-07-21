@@ -7,15 +7,5 @@
             natus, quod voluptatibus facilis incidunt?</span>
     </div>
 
-    <app-employee-list *ngIf="(e$ | async) as employees; else noEmployeesTpl" [employees]="employees"
-        (edit)="onEditEmployee($event)" (delete)="onDeleteEmployee($event)"></app-employee-list>
-
     <router-outlet></router-outlet>
 </div>
-
-<ng-template #noEmployeesTpl>
-    <div class="no-employees">
-        <ng-container *ngIf="searchText">No employees found by search criteria</ng-container>
-        <ng-container *ngIf="!searchText">No employees found</ng-container>
-    </div>
-</ng-template>

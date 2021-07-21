@@ -12,6 +12,7 @@
 
     <div class="buttons">
         <button (click)="onCancel()">Cancel</button>
-        <button (click)="onSave()" class="success no-margin">Save</button>
+        <button (click)="onSave()" class="success no-margin" [class.disabled]="!position"
+            [attr.disabled]="!position || null">Save</button>
     </div>
 </div>

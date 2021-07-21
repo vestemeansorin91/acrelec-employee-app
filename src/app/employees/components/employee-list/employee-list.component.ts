@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
+import { Component } from '@angular/core';
 import { Employee } from '../../models/employee';
+import { EmployeesService } from './../../employees.service';
+import { LocalStorageService } from './../../../shared/services/localstorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -20,20 +23,33 @@ import { Employee } from '../../models/employee';
   ]
 })
 export class EmployeeListComponent {
-  @Input() public employees: Employee[] = [];
-
-  @Output() public delete = new EventEmitter<string>();
-  @Output() public edit = new EventEmitter<Employee>();
-  @Output() public search = new EventEmitter<string>();
-
+  public employees: Employee[] = [];
   public searchText: string = '';
 
+  constructor(private service: EmployeesService, private localStorageService: LocalStorageService, private router: Router) {
+    this.employees = this.service.getAllEmployees();
+   }
+
   public onSearch(input: string): void {
-    this.search.emit(input);
+    // this.search.emit(input);
+    // (input ? this.service.getEmplyoees().pipe(
+    //   map(employees => employees.filter(e => e.firstName.includes(input) || e.secondName.includes(input) || e.position.includes(input))),
+    //   tap((e) => console.log(e))
+    // ) : this.service.getEmplyoees()).subscribe(r => {
+    //   this.e$.next(r);
+    // });
   }
 
   public onResetSearch(): void {
     this.searchText = '';
   }
 
+  public onEditEmployee(employee: Employee): void {
+    this.router.navigate([employee.id])
+  }
+
+  public onDeleteEmployee(id: string): void {
+    this.employees = this.employees.filter(e => e.id !== id);
+    this.service.setEmployees(this.employees);
+  }
 }
