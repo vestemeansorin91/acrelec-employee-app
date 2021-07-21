@@ -3,7 +3,7 @@ import { Employee, EmployeeResponse } from './models/employee';
 
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { LocalStorageService } from './../shared/services/localstorage.service';
+import { LocalStorageService } from '../shared';
 import { environment } from './../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
