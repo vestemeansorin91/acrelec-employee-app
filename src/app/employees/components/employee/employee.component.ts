@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
-import { ConfirmDialogComponent } from './../../../shared/components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared';
 import { Employee } from '../../models/employee';
 
 @Component({
@@ -15,13 +15,13 @@ export class EmployeeComponent {
 
   @ViewChild('confirmDialogRef', { static: false }) confirmDialog: ConfirmDialogComponent | undefined;
 
-  onEdit() {
-    if(!this.employee?.blocked) {
+  public onEdit(): void {
+    if (!this.employee?.blocked) {
       this.edit.emit(this.employee);
     }
   }
 
-  onDelete() {
+  public onDelete(): void {
     this.confirmDialog?.open(this.employee);
   }
 }

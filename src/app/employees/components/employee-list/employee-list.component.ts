@@ -3,7 +3,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { EmployeesService } from './../../employees.service';
-import { LocalStorageService } from './../../../shared/services/localstorage.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,7 +25,7 @@ export class EmployeeListComponent {
   public employees: Employee[] = [];
   public searchText: string = '';
 
-  constructor(private service: EmployeesService, private localStorageService: LocalStorageService, private router: Router) {
+  constructor(private service: EmployeesService, private router: Router) {
     this.employees = this.service.getAllEmployees();
   }
 

@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { EmployeesService } from './../../employees.service';
-import { LocalStorageService } from './../../../shared/services/localstorage.service';
 
 @Component({
   selector: 'app-employee-edit',
@@ -16,15 +15,12 @@ export class EmployeeEditComponent {
   public employeeFormGroup: FormGroup;
 
   constructor(private route: ActivatedRoute,
-     private router: Router, 
-     private fb: FormBuilder, 
-     private service: EmployeesService, 
-     private localStorageService: LocalStorageService) {
+    private router: Router,
+    private fb: FormBuilder,
+    private service: EmployeesService) {
     this.employee = this.service.getAllEmployees().find(e => e.id === this.route.snapshot.params['id']);
 
-    if (!this.employee) {
-      this.navigateBack();
-    }
+    !this.employee && this.navigateBack();
 
     // build form group
     this.employeeFormGroup = this.fb.group({
@@ -35,7 +31,7 @@ export class EmployeeEditComponent {
     this.employeeFormGroup?.get('position')?.patchValue(this.employee?.position);
   }
 
-  get position() {
+  get position(): string {
     return this.employeeFormGroup?.get('position')?.value;
   }
 
@@ -44,7 +40,7 @@ export class EmployeeEditComponent {
   }
 
   public onSave(): void {
-    const updatedEmployee = {...this.employee};
+    const updatedEmployee = { ...this.employee };
     updatedEmployee.position = this.employeeFormGroup.value.position;
 
     this.service.updateEmployeePosition(updatedEmployee as Employee)

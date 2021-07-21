@@ -6,10 +6,8 @@ import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
-    // components
     ConfirmDialogComponent,
 
-    // pipes
     FullNamePipe,
     SearchPipe
   ],

@@ -27,4 +27,3 @@ import { SharedModule } from './../shared/shared.module';
   providers: [EmployeesResolver]
 })
 export class EmployeesModule { }
- 

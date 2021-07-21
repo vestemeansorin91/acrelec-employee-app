@@ -5,7 +5,7 @@ import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss']
 })
-export class ConfirmDialogComponent{
+export class ConfirmDialogComponent {
   @ViewChild('confirmDialogRef', { static: false }) modal: ElementRef | undefined;
   @Output() confirm = new EventEmitter<void>();
   public data: any = null;

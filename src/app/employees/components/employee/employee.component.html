@@ -10,8 +10,7 @@
 
     <div class="employee-buttons">
         <img (click)="onDelete()" src="/assets/images/delete-user.png">
-        <img (click)="onEdit()" src="/assets/images/edit-user.png"
-        [class.disabled]="employee.blocked">
+        <img (click)="onEdit()" src="/assets/images/edit-user.png" [class.disabled]="employee.blocked">
     </div>
 </div>
 <app-confirm-dialog #confirmDialogRef (confirm)="delete.emit(employee?.id)"></app-confirm-dialog>
