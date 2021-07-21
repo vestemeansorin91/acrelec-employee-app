@@ -1,9 +1,12 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
 import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { EmployeesComponent } from './employees.component';
+import { EmployeesResolver } from './employees.resolver';
 import { EmployeesRoutes } from './employees.routes';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/shared.module';
 
@@ -11,14 +14,17 @@ import { SharedModule } from './../shared/shared.module';
   declarations: [
     EmployeesComponent,
     EmployeeListComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeeEditComponent
   ],
   imports: [
     CommonModule,
     EmployeesRoutes,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule
-  ]
+  ],
+  providers: [EmployeesResolver]
 })
 export class EmployeesModule { }
  

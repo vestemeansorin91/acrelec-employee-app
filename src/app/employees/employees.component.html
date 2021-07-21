@@ -7,15 +7,10 @@
             natus, quod voluptatibus facilis incidunt?</span>
     </div>
 
-    <h4>Employee list</h4>
-
-    <div class="search">
-        <input [(ngModel)]="searchText" (ngModelChange)="onSearch($event)" type="text" placeholder="Search">
-        <span *ngIf="searchText" (click)="onResetSearch()" class="search-reset">X</span>
-    </div>
-
     <app-employee-list *ngIf="(e$ | async) as employees; else noEmployeesTpl" [employees]="employees"
         (edit)="onEditEmployee($event)" (delete)="onDeleteEmployee($event)"></app-employee-list>
+
+    <router-outlet></router-outlet>
 </div>
 
 <ng-template #noEmployeesTpl>

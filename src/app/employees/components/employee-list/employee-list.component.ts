@@ -6,6 +6,7 @@ import { Employee } from '../../models/employee';
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
+  styleUrls: ['./employee-list.component.scss'],
   animations: [
     trigger('fade', [
       state('in', style({ opacity: 1 })),
@@ -23,4 +24,16 @@ export class EmployeeListComponent {
 
   @Output() public delete = new EventEmitter<string>();
   @Output() public edit = new EventEmitter<Employee>();
+  @Output() public search = new EventEmitter<string>();
+
+  public searchText: string = '';
+
+  public onSearch(input: string): void {
+    this.search.emit(input);
+  }
+
+  public onResetSearch(): void {
+    this.searchText = '';
+  }
+
 }

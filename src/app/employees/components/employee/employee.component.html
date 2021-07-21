@@ -3,7 +3,7 @@
         <img src="/assets/images/user.png" class="employee-info--avatar">
 
         <div class="employee-info--metadata">
-            <span>{{ employee.firstName }} {{ employee.secondName }}</span>
+            <span>{{ employee | fullName }}</span>
             <span>{{ employee.position }}</span>
         </div>
     </div>

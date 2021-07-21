@@ -1,14 +1,13 @@
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Employee, EmployeeResponse } from './models/employee';
 import { map, tap } from 'rxjs/operators';
 
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeesService {
-    private employees$ = new Subject<Employee[]>();
+    private employees$ = new BehaviorSubject<Employee[]>([]);
     public employeesObs = this.employees$.asObservable();
 
     constructor(private http: HttpClient) { }
@@ -26,11 +25,20 @@ export class EmployeesService {
                         blocked: e.Blocked
                     }
                 })
-            }));
+            }
+           )).pipe(
+               tap(employees => {
+                   this.setEmployees(employees)
+               })
+           );
     }
 
     public setEmployees(employees: Employee[]) {
         this.employees$.next(employees);
+    }
+
+    public getAllEmployees() {
+        return this.employees$.value;
     }
 }
 

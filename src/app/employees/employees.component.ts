@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
@@ -15,11 +16,11 @@ export class EmployeesComponent implements OnInit {
   public e$ = new BehaviorSubject<Employee[]>([]);
   public searchText: string = '';
 
-  constructor(private service: EmployeesService) { }
+  constructor(private service: EmployeesService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getEmplyoees().subscribe(r => {
-      this.e$.next(r);
+    this.route.data.subscribe(data => {
+      this.e$.next(data.employees);
     });
   }
 
@@ -29,9 +30,7 @@ export class EmployeesComponent implements OnInit {
       tap((e) => console.log(e))
     ) : this.service.getEmplyoees()).subscribe(r => {
       this.e$.next(r);
-
     });
-
   }
 
   public onResetSearch(): void {
@@ -39,6 +38,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   public onEditEmployee(employee: Employee): void {
+    this.router.navigate([employee.id])
   }
 
   public onDeleteEmployee(id: string): void {

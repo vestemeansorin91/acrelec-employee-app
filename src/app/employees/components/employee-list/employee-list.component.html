@@ -1,1 +1,10 @@
+<h2>Employee list</h2>
+
+<div class="search">
+    <input [(ngModel)]="searchText" (ngModelChange)="onSearch($event)" type="text" placeholder="Search">
+    <span *ngIf="searchText" (click)="onResetSearch()" class="search-reset">X</span>
+</div>
+
+<div class="divider"></div>
+
 <app-employee *ngFor="let employee of employees" [employee]="employee" (edit)="edit.emit($event)" (delete)="delete.emit($event)"  @fade></app-employee>

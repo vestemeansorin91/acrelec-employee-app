@@ -1,0 +1,17 @@
+<h2>Employees edit</h2>
+<div class="divider"></div>
+
+<div *ngIf="employee" class="employee-edit">
+    <div class="name">{{ employee | fullName }}</div>
+
+    <p [innerHtml]="employee.details"></p>
+
+    <form [formGroup]="employeeFormGroup">
+        <input formControlName="position" type="text" class="form-control">
+    </form>
+
+    <div class="buttons">
+        <button (click)="onCancel()">Cancel</button>
+        <button (click)="onSave()" class="success no-margin">Save</button>
+    </div>
+</div>
