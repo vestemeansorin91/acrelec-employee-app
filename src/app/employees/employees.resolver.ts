@@ -12,8 +12,10 @@ export class EmployeesResolver implements Resolve<Employee[]> {
     constructor(private service: EmployeesService, private localStorageService: LocalStorageService) { }
 
     resolve(): Observable<Employee[]> {
-        if (this.localStorageService.checkIfSaved()) {
-            return of(this.localStorageService.getAllEmployees()).pipe(
+        const hasEmployees = this.localStorageService.getAllEmployees();
+
+        if (hasEmployees.length) {
+            return of(hasEmployees).pipe(
                 tap(employees => this.service.setEmployees(employees))
             )
         }
